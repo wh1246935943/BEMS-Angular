@@ -1,0 +1,108 @@
+<form name="myForm" novalidate angular-validator  angular-validator-submit="submitMyForm()">
+<div class="padding-md">
+<h2 class="header-text">
+    添加设备报检信息
+</h2>
+
+<!--产品备案编号-->
+<!--<div style="padding:2%;background-color: #fff;border: 1px solid #ddd; "class="container-fluid"  >-->
+
+<div class="containtCon">
+
+    <div class="form-horizontal ">
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">产品备案编号</label>
+            <div class="col-lg-10">
+                <input class="form-control" type="text" placeholder="请输入产品备案编号" ng-model="recorderNumber"
+                required-message="'产品备案编号不能为空'" name="recorderNumber" required>
+            </div>
+        </div>
+
+        <!--设备编号-->
+        <div class="form-group ">
+            <label class="col-lg-2 control-label">设备编号</label>
+            <div class="col-lg-10">
+                <input placeholder="请输入设备编号" class="form-control" type="text" ng-model="deviceNumber"
+                       required-message="'设备编号不能为空'" name="deviceNumber" required>
+            </div><!-- /.col -->
+        </div>
+        <!--设备名称-->
+        <div class="form-group ">
+            <label class="col-lg-2 control-label">设备名称</label>
+            <div class="col-lg-10">
+                <input placeholder="请输入设备名称" class="form-control" type="text" ng-model="deviceName"
+                       required-message="'设备名称不能为空'" name="deviceNumber" required>
+            </div><!-- /.col -->
+        </div>
+        <!--规格型号-->
+        <div class="form-group ">
+            <label class="col-lg-2 control-label">规格型号</label>
+            <div class="col-lg-10">
+                <input  placeholder="请输入规格编号" class="form-control" type="text" ng-model="modelNumber"
+                        required-message="'规格编号不能为空'" name="modelNumber" required>
+            </div><!-- /.col -->
+        </div>
+        <!--所属工程-->
+        <div class="form-group ">
+            <label class="col-lg-2 control-label">所属工程</label>
+
+            <div class="col-lg-10">
+                <select class="form-control " ng-model="brand"
+                        ng-init="brand=ownedProject[0].name"
+                        ng-options="value.id as value.name for value in ownedProject"
+                name="brand" required-message="'必选参数'" required>
+                </select>
+            </div><!-- /.col -->
+        </div>
+        <!--设备公司名-->
+        <div class="form-group ">
+            <label class="col-lg-2 control-label">设备公司名</label>
+            <div class="col-lg-10">
+                <!--{{CompanyName|json}}-->
+
+                <select class="form-control" ng-model="companyName" ng-init="companyName=equipCompanyName[0].name"
+                        ng-options="value.id as value.name for value in equipCompanyName">
+
+
+                </select>
+
+            </div><!-- /.col -->
+        </div>
+        <!--申报人-->
+        <div class="form-group ">
+            <label class="col-lg-2 control-label">申报人</label>
+            <div class="col-lg-10">
+                <input  placeholder="请输入申报人" class="form-control" type="text" ng-model="declarant"
+                        required-message="'申报人不能为空'" name="declarant" required>
+            </div><!-- /.col -->
+        </div>
+        <!--设备类型-->
+        <div class="form-group">
+            <label class="col-lg-2 control-label">设备类型</label>
+            <div class="col-lg-10">
+                <ui-select ng-model="equipName.selected" theme="bootstrap" ng-change="getNews(equipName.selected)">
+                    <ui-select-match placeholder="input role name">{{equipName.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="hello2 in equipmentType | filter: $select.search">
+                        <div ng-bind-html="hello2.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div><!-- /.col -->
+        </div>
+        <div class="form-group row" ng-repeat="a in arr">
+            <div class="col-md-2"style="padding-left: 11%;padding-top: 1%;">
+                <label>{{a.name}}</label>
+
+            </div>
+            <div class="col-md-10">
+                <div style="width: 80px" class="button btn-primary " ngf-select ng-model="a.file" ngf-multiple="false">SelectFile</div>
+                <img ngf-src="a.file" alt="">
+            </div>
+        </div>
+        <!--确定-->
+        <button type="submit" class="btn btn-success btn-lg btn-block" >确定</button>
+    </div>
+
+</div>
+</div>
+</form>

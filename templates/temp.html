@@ -1,0 +1,150 @@
+
+<div class="overflow-hidden">
+<div class="wrapper preload">
+	<div class="sidebar-right">
+	</div>
+	<header class="top-nav">
+		<div class="top-nav-inner">
+			<div class="nav-header">
+				<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+
+				<a href="index.html" class="brand">
+					<span class="brand-name">建筑设备报检 <c style="color:#2baab1">管理系统</c></span>
+				</a>
+			</div>
+			<div class="nav-container">
+				<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="pull-right m-right-sm">
+					<ul class="nav-notification">
+						<span>下载手机端App</span>
+						<a>退出</a>
+					</ul>
+				</div>
+			</div>
+		</div><!-- ./top-nav-inner -->
+	</header>
+	<aside class="sidebar-menu fixed">
+		<div class="sidebar-inner scrollable-sidebar">
+			<div class="main-menu">
+				<ul class="accordion">
+					<li class="menu-header">
+						Main Menu
+					</li>
+					<li class="openable bg-palette3">
+						<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
+										<span class="text m-left-sm">基础信息管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+							<span class="menu-content-hover block">
+										基础
+									</span>
+						</a>
+						<ul class="submenu bg-palette4">
+							<li><a href="form_element.html"><span class="submenu-label">登录信息维护</span></a></li>
+							<li><a href="form_validation.html"><span class="submenu-label">单位信息维护</span></a></li>
+							<li><a href="form_wizard.html"><span class="submenu-label">人员信息维护</span></a></li>
+							<li><a href="dropzone.html"><span class="submenu-label">设备类型维护</span></a></li>
+						</ul>
+					</li>
+					<li class="openable bg-palette3">
+						<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
+										<span class="text m-left-sm">信息维护</span>
+										<span class="submenu-icon"></span>
+									</span>
+							<span class="menu-content-hover block">
+										信息
+									</span>
+						</a>
+						<ul class="submenu bg-palette4">
+							<li ng-show="true"><a href="#!/temp/apply-info"><span class="submenu-label">设备报检申请</span></a></li>
+							<li><a href="#!/temp/audit"><span class="submenu-label">检验单位审核</span></a></li>
+							<li><a href="#!/temp/test-ready"><span class="submenu-label">检验单位检验准备</span></a></li>
+							<li><a href="#!/temp/field-inspection"><span class="submenu-label">现场检验</span></a></li>
+							<li><a href="#!/temp/inspection-report"><span class="submenu-label">检验报告</span></a></li>
+							<li><a href="#!/temp/recheck"><span class="submenu-label">检验报告复检</span></a></li>
+							<li><a href="#!/temp/certificate"><span class="submenu-label">安全检验合格证</span></a></li>
+
+						</ul>
+					</li>
+					<li class="openable bg-palette3">
+						<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
+										<span class="text m-left-sm">系统管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+							<span class="menu-content-hover block">
+										大点
+									</span>
+						</a>
+						<ul class="submenu bg-palette4">
+							<li><a href="#!/temp/admin-management"><span class="submenu-label">管理员管理</span></a></li>
+							<li><a href="#!/temp/role-management"><span class="submenu-label">角色管理</span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- sidebar-inner -->
+	</aside>
+
+	<div class="main-container" ui-view="slide-right">
+
+	</div><!-- /main-container -->
+
+
+</div><!-- /wrapper -->
+
+<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
+
+<script>
+$(function()	{
+//				$('.chart').easyPieChart({
+//					easing: 'easeOutBounce',
+//					size: '140',
+//					lineWidth: '7',
+//					barColor: '#7266ba',
+//					onStep: function(from, to, percent) {
+//						$(this.el).find('.percent').text(Math.round(percent));
+//					}
+//				});
+
+//				$('.sortable-list').sortable();
+
+$('.todo-checkbox').click(function()	{
+
+var _activeCheckbox = $(this).find('input[type="checkbox"]');
+
+if(_activeCheckbox.is(':checked'))	{
+$(this).parent().addClass('selected');
+}
+else	{
+$(this).parent().removeClass('selected');
+}
+
+});
+
+//				Delete Widget Confirmation
+//				$('#deleteWidgetConfirm').popup({
+//					vertical: 'top',
+//					pagecontainer: '.container',
+//					transition: 'all 0.3s'
+//				});
+});
+
+</script>
+
+</div>
+

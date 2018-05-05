@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+    <h3 class="modal-title" id="modal-title">添加管理员信息</h3>
+</div>
+<div class="modal-body" id="editModal-body">
+    <div class="form-group row">
+        <div class="col-lg-2">
+            <label>用户名</label>
+        </div>
+        <div class="col-lg-10">
+            <input type="text" placeholder="请输入用户名" class="form-control" ng-model="managerName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-lg-2">
+            <label>密码</label>
+        </div>
+        <div class="col-lg-10">
+            <input type="text" placeholder="请输入密码" class="form-control" ng-model="managerPwd">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-lg-2">
+            <label>电话</label>
+        </div>
+        <div class="col-lg-10">
+            <input type="number" placeholder="请输入电话" class="form-control" ng-model="managerPhone">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-lg-2">
+            <label>角色</label>
+        </div>
+
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="roleObj" ng-init="roleObj=roleList[0].name" ng-options="{id:value.id,per:value.permissions} as value.name for value in roleList">
+            </select>
+        </div>
+    </div>
+    <div class="form-group row ">
+        <div class="col-lg-1"></div>
+        <button class="btn-info col-lg-10 btn-lg " ng-click="ok()" >确定</button>
+        <div class="col-lg-1"></div>
+    </div>
+
+</div>

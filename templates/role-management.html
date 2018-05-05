@@ -1,0 +1,99 @@
+<div class="infoCon">
+    <div class="padding-md">
+        <h2 class="header-text">
+            角色
+        </h2>
+        <div class="containtCon">
+            <div class="text-right">
+                <span class=" btn btn-success"ng-click="addRolesModal(name)">+添加</span>
+            </div>
+        </div>
+        <!--表格-->
+        <!--<div style="border-top: 5px solid #ccc;">-->
+        <table class="table table-striped">
+            <tr class="form-group">
+                <th>角色名</th>
+                <th>操作</th>
+            </tr>
+            <tr  ng-repeat="name in roleAll">
+                <td>{{name.name}}</td>
+
+                <td>
+                    <button class="btn btn-md btn-primary fa fa-edit"ng-click="roleModal(name)"></button>
+                    <button class="btn btn-md btn-danger fa fa-trash-o"ng-click="delete(name.id)"></button>
+
+                </td>
+            </tr>
+
+        </table>
+
+        <!--</div>-->
+        <!--分页-->
+        <div class="text-right">
+            <ul class="pagination">
+                <li class="disabled"><a href="#">«</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/ng-template" id="roleModal.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="modal-title">编辑管理员信息</h3>
+    </div>
+    <div class="modal-body" id="roleModal-body">
+        <div class="form-group row">
+            <div class="col-lg-2">
+                <label>角色名</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" placeholder="请输入用户名" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row" >
+             <div class="col-lg-3"><label>权限</label></div>
+             <div class="col-lg-3"ng-repeat="rush in rushAdd ">
+                 <input type="checkbox" ng-model="rush.createTime" >{{rush.name}}
+             </div>
+
+        </div>
+        <div class="form-group row ">
+            <div class="col-lg-1"></div>
+            <button class="btn-info col-lg-10 btn-lg " ng-click="ok()">确定</button>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+</script>
+<script type="text/ng-template" id="addModal.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="add-title">编辑管理员信息</h3>
+    </div>
+    <div class="modal-body" id="addModal-body">
+        <div class="form-group row">
+            <div class="col-lg-2">
+                <label>角色名</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" placeholder="请输入用户名" ng-model="userName">
+            </div>
+        </div>
+        <div class="form-group row" >
+            <div class="col-lg-3"><label>权限</label></div>
+            <div class="col-lg-3"ng-repeat="rush in rushAdd ">
+                <input type="checkbox" ng-model="rush.createTime" >{{rush.name}}
+            </div>
+
+        </div>
+        <div class="form-group row ">
+            <div class="col-lg-1"></div>
+            <button class="btn-info col-lg-10 btn-lg " ng-click="ok()">确定</button>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+</script>

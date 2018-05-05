@@ -1,0 +1,123 @@
+<form  name="myForm" class="form-horizontal" novalidate angular-validator angular-validator-submit="submitMyForm()">
+
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="modal-title">修改设备报检信息</h3>
+    </div>
+    <div class="modal-body text-right" id="modal-body">
+
+            <div class="form-horizontal ">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">产品备案编号</label>
+                <div class="col-lg-10">
+                    <input class="form-control" type="text" placeholder="请输入产品备案编号" ng-model="recorderNumber"
+                           name = "recorderNumber"
+                           required-message="'产品档案编号不能为空'"
+                           required>
+                </div>
+            </div>
+
+            <!--设备编号-->
+            <div class="form-group ">
+                <label class="col-lg-2 control-label">设备编号</label>
+                <div class="col-lg-10">
+                    <input placeholder="请输入设备编号" class="form-control" type="text" ng-model="deviceNumber"
+                           name = "deviceNumber"
+                           required-message="'设备编号不能为空'"
+                           required>
+                </div><!-- /.col -->
+            </div>
+            <!--设备名称-->
+            <div class="form-group ">
+                <label class="col-lg-2 control-label">设备名称</label>
+                <div class="col-lg-10">
+                    <input placeholder="请输入设备名称" class="form-control" type="text" ng-model="deviceName"
+                           name = "deviceNumber"
+                           required-message="'设备名称不能为空'"
+                           required>
+                </div><!-- /.col -->
+            </div>
+            <!--规格型号-->
+            <div class="form-group ">
+                <label class="col-lg-2 control-label">规格型号</label>
+                <div class="col-lg-10">
+                    <input  placeholder="请输入规格型号" class="form-control" type="text" ng-model="modelNumber"
+                            name = "modelNumber"
+                            required-message="'规格型号不能为空'"
+                            required>
+                </div><!-- /.col -->
+            </div>
+            <!--所属工程-->
+            <div class="form-group ">
+                <label class="col-lg-2 control-label">所属工程</label>
+
+                <div class="col-lg-10">                    
+                    <ui-select ng-model="brand" theme="bootstrap" ng-change="getNews()">
+                        <ui-select-match placeholder="input role name">{{brand.name}}</ui-select-match>
+                        <ui-select-choices repeat="hello2 in ownedProject | filter: $select.search">
+                            <div ng-bind-html="hello2.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div><!-- /.col -->
+            </div>
+            <!--设备公司名-->
+            <div class="form-group ">
+                <label class="col-lg-2 control-label">设备公司名</label>
+                <div class="col-lg-10">
+                    <!--{{CompanyName|json}}-->
+                    <ui-select ng-model="companyName" theme="bootstrap" ng-change="getNews()">
+                        <ui-select-match placeholder="input role name">{{companyName.name}}</ui-select-match>
+                        <ui-select-choices repeat="hello2 in equipCompanyName | filter: $select.search">
+                            <div ng-bind-html="hello2.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div><!-- /.col -->
+            </div>
+            <!--申报人-->
+            <div class="form-group ">
+                <label class="col-lg-2 control-label">申报人</label>
+                <div class="col-lg-10">
+                    <input  placeholder="请输入申报人" class="form-control" type="text" ng-model="declarant"
+                            name = "declarant"
+                            required-message="'申报人不能为空'"
+                            required>
+                </div><!-- /.col -->
+            </div>
+            <!--设备类型-->
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设备类型</label>
+                <div class="col-lg-10">
+                    <ui-select ng-model="info.deviceType" theme="bootstrap" ng-change="getNews()">
+                        <ui-select-match placeholder="input role name">{{info.deviceType.name}}</ui-select-match>
+                        <ui-select-choices repeat="hello2 in equipmentType | filter: $select.search">
+                            <div ng-bind-html="hello2.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div><!-- /.col -->
+            </div>
+                <!--上传文件-->
+                <div class="form-group" ng-repeat="data in info.deviceType.applicationMaterials">
+                    <label class="col-lg-3 control-label">{{data.name}}</label>
+                    <div class="col-lg-9">
+                        <input type="file" ngf-select ng-model="myFiles[$index]" name="file"
+                               accept="image/*" ngf-max-size="2MB" required
+                               ngf-model-invalid="errorFile">
+                        <img ngf-src="files[$index]" src="" alt="" class="img-responsive" style="border: 1px solid #ccc;" >
+                        <div ng-repeat="file in info.applicationMaterialFiles" class="ng-scope">
+                            <img class="img-responsive" ng-if="file.name==data.name && files[$parent.$index]==null" ngf-src="file.url" style="width: 150px;height: 200px;border: 1px solid #ccc;">
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <!--确定-->
+        <button class="btn btn-success btn-lg btn-block" >确定</button>
+    </div>
+
+
+</form>

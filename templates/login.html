@@ -1,0 +1,43 @@
+
+
+<div class="overflow-hidden light-background">
+<div class="wrapper no-navigation preload">
+    <div class="sign-in-wrapper">
+        <div class="sign-in-inner">
+            <div class="login-brand text-center">
+                <i class=" m-right-xs"></i> 建筑设备报检 <br>
+                <strong class="text-skin">后台管理系统</strong>
+            </div>
+
+            <form name="myForm"  change="false" novalidate >
+                <div class="form-group m-bottom-md">
+                    <input type="text" class="form-control" placeholder="用户名" ng-model="userInfo.name"
+                    required name="name"ng-blur="change=true" ng-focus="change=false">
+                    <div ng-if="change&&myForm.name.$dirty && myForm.name.$invalid" class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <i ng-if="change&&myForm.name.$error.required" class="fa fa-times-circle m-right-xs"></i> <strong>用户名不能为空</strong>
+                    </div>
+                </div>
+              <!--{{myForm}}-->
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="密码" ng-model="userInfo.password"
+                    required name="password">
+                    <div ng-if="change&&myForm.password.$dirty && myForm.password.$invalid" class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <i ng-if="change&&myForm.password.$error.required" class="fa fa-times-circle m-right-xs"></i> <strong>密码不能为空</strong>
+                    </div>
+                </div>
+
+                <!--<a href="#!/temp/apply-info" class="btn btn-success block">登录</a>-->
+                <div class="m-top-md p-top-sm">
+                    <input style="width: 100%" type="submit" ng-click="jumpToTempPage()"  class="btn btn-success block" value="登录">
+
+                </div>
+
+            </form>
+        </div><!-- ./sign-in-inner -->
+    </div><!-- ./sign-in-wrapper -->
+</div><!-- /wrapper -->
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="icon-chevron-up"></i></a>
+</div>

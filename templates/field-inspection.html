@@ -1,0 +1,372 @@
+<div class="infoCon">
+<div class="padding-md">
+    <h2 class="header-text">
+        现场检验
+    </h2>
+    <div class="containtCon">
+        <!--顶部时间检索开始-->
+        <form action="" class="form-inline ng-pristine ng-valid" ng-init="searchTools.setting.startDateIsOpen = true;searchTools.setting.endDateIsOpen = true">
+            <div class="input-group">
+                <div ng-controller="DatepickerPopupDemoCtrl">
+                    <!--<div class="row">-->
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="dt"
+                               is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true"
+                               close-text="Close"/>
+                        <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-success" ng-click="open2()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </p>
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="input-group">
+                <div ng-controller="DatepickerPopupDemoCtrl">
+                    <!--<div class="row">-->
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="dt"
+                               is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true"
+                               close-text="Close"/>
+                        <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-success" ng-click="open2()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </p>
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="input-group">
+                <p class="input-group">
+                    <input type="text" class="form-control" placeholder="请键入关键字"/>
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-success">搜索</button>
+                            </span>
+                </p>
+            </div>
+
+
+        </form>
+        <!--顶部时间检索结束-->
+    <!--表格-->
+    <div style="border-top: 5px solid #ccc;">
+        <table class="table table-striped" >
+            <tr class="form-group">
+                <th>检验受理编号</th>
+                <th>检验项目名称</th>
+                <th>检验设备名称</th>
+                <th>检验设备编号</th>
+                <th>项目公司名称</th>
+                <th>申报人员</th>
+                <th>创建日期</th>
+                <th>操作</th>
+
+            </tr>
+            <tr ng-repeat="field in fieldINfo">
+                <td>{{field.id}}</td>
+                <td>{{field.projectName}}</td>
+                <td>{{field.deviceName}}</td>
+                <td>{{field.deviceCode}}</td>
+                <td>{{field.applicationCompanyName}}</td>
+                <td>{{field.createTime}}</td>
+                <td>abc</td>
+                <td>
+                    <button class="btn btn-md btn-primary fa fa-edit" ng-click="fieldModal(field.id)"></button>
+                    <button class="btn btn-md btn-success fa fa-file-text-o" ng-click="fieldTextModal(field.id)"></button>
+
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+    <!--分页-->
+    <div class="text-right">
+        <ul class="pagination">
+            <li class="disabled"><a href="#">«</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
+    </div>
+        </div>
+</div>
+</div>
+<script type="text/ng-template" id="fieldModal.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="modal-title">现场检测</h3>
+    </div>
+    <div class="modal-body" id="fieldModal-body">
+        <div class="form-group row">
+            <div class="col-lg-3">
+                <label>检验受理编号</label>
+            </div>
+            <div class="col-lg-9">
+                <input type="text" ng-model="recheckDetailInfo.execution.id" class="form-control">
+            </div>
+        </div>
+        <!--<div class="form-group row" ng-repeat="localePic in recheckDetailPic">-->
+            <!--<div class="col-md-2">-->
+                <!--<label>{{localePic.name}}</label>-->
+
+            <!--</div>-->
+            <!--<div class="col-md-10 row">-->
+                <!--<button ng-click="addPic()">添加图片</button>-->
+                <!--<div ng-repeat="pic in picArr">-->
+                    <!--<p style="width: 100%;height:30px;background: #e1efff">第{{pic}}项</p>-->
+                    <!--<div style="width: 80px" class="button  " ngf-select ng-model="file" ngf-multiple="false">选择图片</div>-->
+                    <!--<img style="width: 100px; height: 170px" ngf-src="file" alt="">-->
+                    <!--<button ng-click="delPic()" class="btn btn-danger">删除</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+
+
+
+
+        <div ng-repeat="values in fileCon">
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label>{{info.reportMaterialFiles[$index].name}}</label>
+                </div>
+                <div class="col-md-10">
+                    <button ng-click="values.push({url:''})">添加</button>
+                </div>
+                <div class="col-md-12"></div>
+
+            </div>
+            <div class="form-group row" ng-repeat="value in values">
+                <div class="col-md-2">
+                    <label>第{{$index+1}}项</label>
+
+                </div>
+                <div class="col-md-10">
+                    <button ngf-select ng-model="value.url" ngf-multiple="false">选择文件</button>
+                    <img ngf-src="value.url" alt="">
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="form-group row ">
+            <div class="col-lg-1"></div>
+            <button class="btn-info col-lg-10 btn-lg " ng-click="ok()">上传</button>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="fieldTextModal.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="modal-titled">报告详情</h3>
+    </div>
+    <div class="modal-body" id="fieldTextModal-body">
+        <div ng-controller="TabsDemoCtrl" style="padding:10px">
+            <uib-tabset active="activeJustified" justified="true">
+                    <uib-tab index="0" heading="设备报检申请">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>产权备案编号</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.iprCode">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>设备编号</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.deviceCode">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>设备名称</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.deviceName">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>规格型号</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.specification">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>所属工程</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.project.name">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>设备公司名称</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.applicationCompany.name">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>申报人</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  ng-model="recheckDetailInfo.application.declarant">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>申报时间</label>
+
+                            </div>
+                            <div class="col-md-9">
+                            <span type="text" class="form-control"  ng-bind="recheckDetailInfo.application.createTime|date:'yyyy/MM/dd HH:mm:ss'">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-group ng-scope row" ng-repeat="pic in recheckDetailInfoPic">
+                            <label class="col-lg-3 row control-label ng-binding" ng-bind="pic.name"></label>
+                            <div class="col-lg-9 row">
+                                <img style="width: 150px;height:100px" class="material-image" ng-src="{{pic.url}}" ng-click="openImage(pic.url)" src="{{pic.url}}">
+                            </div>
+                        </div>
+                        
+                    </uib-tab>
+
+                    <uib-tab index="1" heading="检验单位审核">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>审核人</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Email" ng-model="recheckDetailInfo.accept.accepter.username">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>审核时间</label>
+
+                            </div>
+                            <div class="col-md-9">
+                            <span type="text" class="form-control" placeholder="Email" ng-bind="recheckDetailInfo.accept.createTime|date:'yyyy/MM/dd HH:mm:ss'">
+                            </span>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="2" heading="现场检验详情">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>检验人员</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Email" ng-model="recheckDetailInfo.execution.inspector.username">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>签到时间</label>
+
+                            </div>
+                            <div class="col-md-9">
+                            <span type="text" class="form-control" ng-bind="recheckDetailInfo.execution.signIn.createTime|date:'yyyy/MM/dd HH:mm:ss'">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>签到地点</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" ng-model="recheckDetailInfo.execution.signIn.address">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>签退时间</label>
+
+                            </div>
+                            <div class="col-md-9">
+                            <span type="text" class="form-control" ng-bind="recheckDetailInfo.execution.signOut.createTime|date:'yyyy/MM/dd HH:mm:ss'">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>签退地点</label>
+
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" ng-model="recheckDetailInfo.execution.signOut.address">
+
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-repeat="value in recheckDetailInfo.execution.materialFiles">
+                            <div class="col-lg-3">
+                                <label>{{value.name}}</label>
+                            </div>
+                            <div class="col-md-9">
+                                <img alt="" src="{{value.url1}}" ng-src="{{value.url1}}">
+                                <img alt="" src="{{value.url2}}" ng-src="{{value.url2}}">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>审核时间</label>
+
+                            </div>
+                            <div class="col-md-9">
+                            <span type="text" class="form-control" placeholder="Email" ng-bind="recheckDetailInfo.execution.createTime|date:'yyyy/MM/dd HH:mm:ss'">
+                            </span>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</script>

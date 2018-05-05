@@ -1,0 +1,20 @@
+<!--顶部时间检索开始-->
+<form action="" class="form-inline ng-pristine ng-valid" ng-init="searchTools.setting.startDateIsOpen = true;searchTools.setting.endDateIsOpen = true">
+    <div class="input-group">
+        <div>
+            <!--<div class="row">-->
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="$ctrl.dates.date"
+                       is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true"
+                       close-text="Close"/>
+                <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-success" ng-click="open1()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+            </p>
+            <!--</div>-->
+        </div>
+    </div>
+
+</form>
+<!--顶部时间检索结束-->

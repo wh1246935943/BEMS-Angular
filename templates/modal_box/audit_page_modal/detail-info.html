@@ -1,0 +1,97 @@
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="detailInfo-title">报告详情</h3>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="">设备报检申请</a></li>
+        </ul>
+    </div>
+    <div class="modal-body" id="detailInfo-body">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">产权备案编号</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="recorderNumber">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">设备编号</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="deviceNumber">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">设备名称</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email"  ng-model="deviceName">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">规格型号</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="modelNumber">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">所属工程</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="brand">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">设备公司名称</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="companyName">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">申报人</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="declarant">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="exampleInputEmail1">设备类型</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="equipName">
+            </div>
+        </div>
+        <div class="form-group" ng-repeat="data in info.deviceType.applicationMaterials">
+            <label class="col-lg-3 control-label">{{data.name}}</label>
+            <div class="col-lg-9">
+                <img ngf-src="files[$index]" src="" alt="" class="img-responsive" style="width: 150px;height: 200px;border: 1px solid #ccc;" >
+                <div ng-repeat="file in info.applicationMaterialFiles" class="ng-scope">
+                    <img class="img-responsive" ng-if="file.name==data.name && files[$parent.$index]==null" ngf-src="file.url" style="width: 150px;height: 200px;border: 1px solid #ccc;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+    </div>

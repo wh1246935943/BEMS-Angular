@@ -1,0 +1,86 @@
+<form name="myForm" class="form-horizontal" novalidate angular-validator
+      angular-validator-submit="submitMyForm()">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+        <h3 class="modal-title" id="acceptIt-title">受理信息详情</h3>
+    </div>
+    </div>
+    <div class="modal-body" id="acceptIt-body">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label>检验受理编号</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="recorderNumber"
+                       name = "recorderNumber"
+                       required-message="'检验受理编号不能为空'"
+                       required>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label>申报单位</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="companyName"
+                       name = "companyName"
+                       required-message="'申报单位不能为空'"
+                       required>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label>申报人</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="declarant"
+                       name = "declarant"
+                       required-message="'申报人不能为空'"
+                       required>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label>检验项目名称</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="brand"
+                       name = "brand"
+                       required-message="'检验项目不能为空'"
+                       required>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label>检验设备编号</label>
+
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="Email" ng-model="deviceNumber"
+                       name = "deviceNumber"
+                       required-message="'设备编号不能为空'"
+                       required>
+            </div>
+        </div>
+        <div class="form-group" ng-repeat="data in info.deviceType.applicationMaterials">
+            <label class="col-lg-3 control-label">{{data.name}}</label>
+            <div class="col-lg-9">
+
+                <img ngf-src="files[$index]" src="" alt="" class="img-responsive" style="width: 150px;height: 200px;border: 1px solid #ccc;" >
+                <div ng-repeat="file in info.applicationMaterialFiles" class="ng-scope">
+                    <img class="img-responsive" ng-if="file.name==data.name && files[$parent.$index]==null" ngf-src="file.url" style="width: 150px;height: 200px;border: 1px solid #ccc;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success btn-lg btn-block" >确定</button>
+    </div>
+</form>

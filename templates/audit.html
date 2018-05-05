@@ -1,0 +1,48 @@
+
+<div class="infoCon modal-demo" ng-controller="audits as ctrl">
+    <!--<time-pickers on-log="ctrl.log(text1)"></time-pickers>-->
+    <div class="padding-md">
+        <h3 class="m-left-xs header-text m-top-lg">检验单位审核</h3>
+        <div class="containtCon">
+            <time-pickers on-change="ctrl.getsearchInfo(text1)"></time-pickers>
+            <table class="table table-striped">
+                <tr class="form-group">
+                    <th>检验受理编号</th>
+                    <th>检验项目名称</th>
+                    <th>检验设备名称</th>
+                    <th>检验设备编号</th>
+                    <th>项目公司名称</th>
+                    <th>申报人员</th>
+                    <th>创建日期</th>
+                    <th>操作</th>
+
+                </tr>
+                <!--<tr ng-repeat="value in auditTextInfo">-->
+                <tr ng-repeat="value in auditTextInfo">
+                    <td>{{value.iprCode}}</td>
+                    <td>{{value.projectName}}</td>
+                    <td>{{value.deviceName}}</td>
+                    <td>{{value.deviceCode}}</td>
+                    <td>{{value.applicationCompanyName}}</td>
+                    <td>{{value.declarant}}</td>
+                    <td>{{value.createTime|date:'yyyy/MM/dd HH:mm:ss'}}</td>
+                    <td>
+                        <button class="btn btn-md btn-primary fa fa-edit" ng-click="openComponentModal(value.id)"></button>
+                        <button class="btn btn-md btn-primary fa fa-check-square-o" ng-click="acceptIt(value.id)"></button>
+                        <button class="btn btn-md btn-success fa fa-file-text-o" ng-click="detailInfo(value.id)"></button>
+
+                    </td>
+                </tr>
+
+            </table>
+            <div class="text-right">
+                    <ul uib-pagination boundary-links="true" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChange()"></ul>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
